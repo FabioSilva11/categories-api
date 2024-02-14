@@ -1,49 +1,70 @@
-[
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+database = [
     {
-      
-      "title": "Casa e Jardim",
-      "complement1": "Móveis",
-      "complement2": "Utilidades domésticas",
-      "complement3": "Aparelhos",
-      "complement4": "Ferramentas",
-      "complement5": "Jardim",
-      "imagem": "https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
+        "title": "Casa e Jardim",
+        "complement1": "Móveis",
+        "complement2": "Utilidades domésticas",
+        "complement3": "Aparelhos",
+        "complement4": "Ferramentas",
+        "complement5": "Jardim",
+        "imagem": "https://cdn-icons-png.flaticon.com/512/1946/1946488.png"
     },
     {
-      "title": "Eletrônicos",
-      "complement1": "Eletrônicos e Informática",
-      "complement2": "Telefones Celulares",
-      "imagem": "https://cdn-icons-png.flaticon.com/512/545/545245.png"
+        "title": "Eletrônicos",
+        "complement1": "Eletrônicos e Informática",
+        "complement2": "Telefones Celulares",
+        "complement3": "Fones de Ouvido",
+        "complement4": "Câmeras",
+        "complement5": "Acessórios de Computador",
+        "imagem": "https://cdn-icons-png.flaticon.com/512/545/545245.png"
     },
     {
-      "title": "Hobbies",
-      "complement1": "Esportes e Atividades ao Ar Livre",
-      "complement2": "Instrumentos Musicais",
-      "complement3": "Artes e Artesanato",
-      "complement4": "Peças Automotivas",
-      "complement5": "Bicicletas",
-      "imagem": "https://cdn-icons-png.flaticon.com/512/1683/1683815.png"
+        "title": "Hobbies",
+        "complement1": "Esportes e Atividades ao Ar Livre",
+        "complement2": "Instrumentos Musicais",
+        "complement3": "Artes e Artesanato",
+        "complement4": "Peças Automotivas",
+        "complement5": "Bicicletas",
+        "imagem": "https://cdn-icons-png.flaticon.com/512/1683/1683815.png"
     },
     {
-      "title": "Roupas e Acessórios",
-      "complement1": "Roupas e Calçados Femininos",
-      "complement2": "Roupas e Calçados Masculinos",
-      "complement3": "Joias e Acessórios",
-      "complement4": "Bolsas e Malas",
-      "imagem": "https://cdn-icons-png.flaticon.com/512/90/90825.png"
+        "title": "Roupas e Acessórios",
+        "complement1": "Roupas e Calçados Femininos",
+        "complement2": "Roupas e Calçados Masculinos",
+        "complement3": "Joias e Acessórios",
+        "complement4": "Bolsas e Malas",
+        "complement5": "Óculos de Sol",
+        "imagem": "https://cdn-icons-png.flaticon.com/512/90/90825.png"
     },
     {
-      "title": "Família",
-      "complement1": "Bebês e Crianças",
-      "complement2": "Saúde e Beleza",
-      "complement3": "Brinquedos e Jogos",
-      "complement4": "Artigos para Animais de Estimação",
-      "imagem": "https://cdn-icons-png.flaticon.com/512/215/215544.png"
+        "title": "Família",
+        "complement1": "Bebês e Crianças",
+        "complement2": "Saúde e Beleza",
+        "complement3": "Brinquedos e Jogos",
+        "complement4": "Artigos para Animais de Estimação",
+        "complement5": "Cuidados Pessoais",
+        "imagem": "https://cdn-icons-png.flaticon.com/512/215/215544.png"
     },
     {
-      "title": "Entretenimento",
-      "complement1": "VideoGames",
-      "complement2": "Jogos",
-      "imagem": "https://cdn-icons-png.flaticon.com/256/814/814197.png"
+        "title": "Entretenimento",
+        "complement1": "VideoGames",
+        "complement2": "Jogos",
+        "complement3": "Shows e Eventos",
+        "complement4": "Livros e Revistas",
+        "complement5": "Filmes e Séries",
+        "imagem": "https://cdn-icons-png.flaticon.com/256/814/814197.png"
     }
 ]
+
+@app.route('/<category>')
+def get_category(category):
+    for item in database:
+        if item["title"].lower() == category.lower():
+            return jsonify(item)
+    return jsonify({"error": "Categoria não encontrada"}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
