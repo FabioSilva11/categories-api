@@ -1,18 +1,24 @@
-# categories-api
-Categories API 
-Simple API for you to use in your projects!
+# API de categorias 
+API de categorias
+API simples para você usar em seus projetos!
+# Chaves para obter:
+<br>
+Nome da Categoria: title
+</br>
+Ícone de categoria: imagem
 
-# Keys to obtain:
-
-Category name: title
-Category Icon: imagem
-
-# Keys to the complete categories:
-(note: not all categories have the 5 complements!)
+# Chave para obter os complementos das categoria
+(nota: nem todas as categorias possuem os 5 complementos!)
 <p>
-Complement 1: complement1
-Complement 2: complement2
-Complement 3: complement3
-Complement 4: complement4
-Complement 5: complement5
+  <br>
+Complemento 1: complement1
+</br>
+Complemento 2: complement2
+<br>
+Complemento 3: complement3
+</br>
+Complemento 4: complement4
+<br>
+Complemento 5: complement5
+</br>
 </p>
